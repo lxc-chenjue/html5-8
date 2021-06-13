@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+        	margin:0;
+            list-style: none;
+        }
+        .cont{
+            height:100%;
+            background: black;
+        }
+        .con{
+            display: flex;
+            flex-direction: row;
+			align-items: center;
+            flex-wrap: nowrap;
+        }
+        .con li:nth-child(1){
+            width:150px;
+        }
+        .con li:nth-child(2){
+            color:yellow;
+        }
+        .con li:nth-child(5){
+            width:150px;
+        }
+        .con li:nth-child(9){
+            width:50px;
+        }
+        .con li:nth-child(7){
+            width:120px;
+        }
+        .con li:nth-child(12){
+            width:50px;
+        }
+        .con li:nth-child(13){
+            width:300px;
+        }
+        .cont ul li{
+            width:105px;
+            height:100%;
+            font-size: 20px;
+            color:aliceblue;
+        }
+
+        .music{
+            width:1200px;
+            margin:auto;
+            
+        }
+        .lists{
+            width:800px;
+            text-align: center;
+            border-left:50px;
+            float:left;
+        }
+        .back{
+            width:700px;
+            height:10px;
+            background: white;;
+        }
+        .lin{
+            width:700px;
+            height:2px;
+            border-top:1px solid gray;
+            border-left:50px;
+        }
+        .story{
+            width:700px;
+            height:500px;
+            overflow: auto;
+            line-height: 50px;
+            text-align: center;
+            border-left:50px;
+            border:1px solid rgb(173, 171, 171);
+        }
+        @keyframes mycolor{
+		    0%{
+		        transform: rotate(0deg);
+		    }
+            50%{
+                transform:rotate(180deg);
+            }
+		    100%{
+		        transform: rotate(360deg);
+		    }
+		}
+        .img{
+            width:300px;
+            height:450px;
+            float: right;
+        }
+        .white{
+            width:300px;
+            height:100px;
+        }
+        /*画布*/
+        #canvas1{
+            animation-name: mycolor;
+		    animation-duration: 5s;
+            animation-iteration-count:infinite;
+		    animation-timing-function: linear;
+        }
+        .colorful{
+            color:rgb(155, 155, 3);
+        }
+        #download{
+            width:200px;
+            height:50px;
+            background: rgb(0, 23, 128);
+            color:white;
+            margin: auto;
+            border-radius: 20px;
+        }
+        .top{
+            margin-top: 100px;
+            width:300px;
+            height:500px;
+        }
+        /*音乐*/
+        .play{
+            width: 40px;
+            height: 40px;
+            float: right;
+            position: absolute;
+            right: 35%;
+            margin-top: -70px;
+        }
+        #play_btn{
+            width: 40px;
+            height: 40px;
+            background-position: -137px -153px;
+            background-image: url(images/b.png);
+            border: none;
+            border-radius: 50%;
+            outline: none;
+        }
+        #probar{
+            float:left;
+            position: absolute;
+            left: 65%;
+            margin-top: -48px;
+            width: 300px;
+            height: 4px;
+            display: inline;
+            background-color: rgb(228, 225, 225); 
+        }
+        #bufbar{
+            width: 100%;
+            height: 4px;
+        }
+        #bar{
+            background:#ffe443;
+            height: 4px;
+            display: block;
+        }
+        #sche_btn{
+            width: 10px;
+            height: 10px;
+            background: url(images/b.png) 0 -128px;
+            position: absolute;
+            top: -3px;
+            color: white;
+        }
+        .play_right{
+            display: block;
+            float: right;
+            position: absolute;
+            right: 12%;
+            margin-top: -60px;
+        }
+        #paly_time{
+            font-size: 15px;
+        }
+        #ctrl_btn{
+            width: 20px;
+            height: 20px;
+            background-image: url(images/b.png);
+            background-position:-263px -127px ;
+            float: right;
+            position: relative;
+            left: 30px;
+            bottom: 20px;
+            outline: none;
+            border: none;
+            border-radius: 50%;
+        }
+
+        .listening{
+            width:1000px;
+            margin-top: 50px;
+            margin-left: 180px;
+            float: left;
+        }
+        .lin-1{
+            width:1000px;
+            height:2px;
+            border-top:1px solid gray;
+            border-left:50px;
+        }
+        .reading{
+            width:800px;
+            height:200px;
+            margin:auto;
+        }
+        .init{
+            width:600px;
+            height:200px;
+            border: 1px solid black;
+        }
+        .left{
+            float:left;
+            border-left: 15px;
+            border-top: 100px;
+        }
+        .right{
+            float:right;
+            border-right:15px;
+        }
+        .buttom{
+            width:1000px;
+            height:50px;
+            border-left: 20px;
+            border-top:10px;
+        }
+        .uv{
+            width:50px;
+            height:30px;
+            background-color: #ff6500;
+            color:white;
+            float:right;
+            border-right:100px;
+        }
+
+        /*分页*/
+        .page-normal{
+            width:1200px;
+            height:50px;
+            color:#ff6500;
+            text-align: center;
+            display: flex;
+            float:left;
+            margin-top: 200px;
+            margin-left: 200px;
+        }
+        .page-normal li a{
+            border:1px solid #f08801;
+            width:30px;
+            height:30px;
+            border-radius:30px;
+            padding:7px 7px;
+            color:#dacdbc;
+            margin-left:30px;
+            text-decoration: none;
+        }
+        .page-normal a:hover{
+            background-color: #f08801;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <ul class="con">
+            <li><img src="./images/c.jpg" alt=""></li>
+            <li>首页</li>
+            <li>榜单</li>
+            <li>歌手</li>
+            <li>下载酷我客户端</li>
+            <li><img src="./images/g.png" alt="">美女秀</li>
+            <li><img src="./images/g.png" alt="">小酷我耳机</li>
+            <li><img src="./images/g.png" alt="">VIP会员</li>
+            <li><img src="./images/g.png" alt="">i听</li>
+            <li>更多服务</li>
+            <li>登录</li>
+            <li><span>^</span></li>
+            <li><img src="./images/d.png" alt=""></li>
+        </ul>
+    </div>
+    <div class="music">
+        <div class="lists">
+            <h3>喜羊羊</h3>
+            <p>专辑：<a class="colorful">儿歌大全</a>&nbsp;歌手：<a class="colorful">华语群星</a>&nbsp;分享&nbsp;<img src="./images/f.jpg" alt=""><a class="colorful">评论</a></p>
+            <p>上传时间：2.15-10-02 &nbsp; 歌曲来源：民大相思潮网球社</p>
+            <div class="back"></div>
+            <div class="lin"></div>
+            <div class="back"></div>
+            <ul class="story">
+                <li><p>词：古倩敏</p></li>
+                <li><p>曲：古倩敏</p></li>
+                <li><p>喜羊羊 美羊羊 懒羊羊 沸羊羊</p></li>
+                <li><p>慢羊羊软绵绵红太狼灰太狼</p></li>
+                <li><p>别看我只是一只羊</p></li>
+                <li><p>绿草因为我变的更香</p></li>
+                <li><p>白云因为我变得柔软</p></li>
+                <li><p>别看我只是一只羊</p></li>
+                <li><p>羊儿的聪明难以想象</p></li>
+                <li><p>天再高心情一样奔放</p></li>
+                <li><p>每天都追赶太阳</p></li>
+                <li><p class="colorful">有什么难题 去牵绊我 都不会去心伤</p></li>
+                <li><p>有什么危险 在我面前 也不会去慌乱</p></li>
+                <li><p>就算有狼群 把我追捕 也当做游戏一场</p></li>
+                <li><p>在什么时间 都爱开心 笑容都会飞翔 </p></li>
+                <li><p>就算会摔倒 站了起来 永远不会沮丧 </p></li>
+                <li><p>在所有天气 拥有叫人 大笑的力量 </p></li>
+                <li><p>虽然我只是羊</p></li>
+            </ul>
+        </div>
+        <div class="img">
+            <div class="white"></div>
+            <canvas id="canvas1" width="300" height="300"></canvas>
+            <div class="line">
+                <audio autoplay="autoplay" id="mymusic">
+                    <source src="./images/x.mp3" type="audio/mp3">
+                </audio>
+                <div class="play">
+                    <button id="play_btn"><button>
+                </div>
+                <div id="probar">
+                    <div id="bufbar">
+                        <div id="bar" style="width: 0;"></div>
+                        <a id="sche_btn" href="#" style="left: 0;"></a>
+                    </div>
+                </div>
+                <div class="play_right">
+                    <p id="paly_time">00:00</p>
+                    <button id="ctrl_btn"><button>
+                </div>
+                <div class="top">
+                    <button id="download">
+                        <img src="./images/h.png" alt="">免费下载这首歌
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="listening">
+        <h4>评论 | 1703条评论</h4>
+        <div class="lin-1"></div>
+        <div class="reading">
+            <div class="left"><img src="./images/e.jpg" alt=""></div>
+            <div class="right"><input type="text" class="init"></div>
+        </div>
+        <div class="buttom">
+            <button class="uv">提交</button>
+        </div>
+    </div>
+    <div class="page-normal">
+        <li><a href="*">&it;</a></li>
+        <li><a href="*"> 1</a></li>
+        <li><a href="*"> 2</a></li>
+        <li><a href="*"> 3</a></li>
+        <li>&nbsp;…</li>
+        <li><a href="*">17</a></li>
+        <li><a href="*">&gt;</a></li>
+
+    </div>
+    <script>
+        //画布
+        var c = document.getElementById("canvas1");
+        var ctx = c.getContext("2d");
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = "gray";
+        ctx.arc(150,150,148,0,2*Math.PI);
+        ctx.stroke();
+
+        var img = new Image();
+        img.src = './images/a.jpg';
+        img.onload=function(){
+            ctx.arc(150,150,140,0,2*Math.PI);
+            ctx.fill();
+            ctx.clip();
+            ctx.drawImage(this,10,10)
+            ctx.drawImage(img,0,0,300,300);
+
+            ctx.beginPath();
+		    ctx.arc(150,150,9,0,2*Math.PI);
+		    ctx.fillStyle="white";
+            ctx.strokeStyle = "white";
+	    	ctx.closePath();
+		    ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(150,150,16,0,2*Math.PI);
+            ctx.strokeStyle = "gray";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+        //bgm
+        var audio = document.getElementById('mymusic');
+        var play = document.getElementById('play_btn');
+        var playtime = document.getElementById('paly_time');
+        var mute = document.getElementById('ctrl_btn');
+        var bar = document.getElementById('bufBar');
+        var pbar = document.getElementById('bar');
+        var pbtn = document.getElementById('sche_btn');
+
+        audio.autoplay =true;
+            audio.load();
+            
+
+        mute.onclick=function(){
+            audio.muted==true?audio.muted=false:audio.muted=true;
+        }
+
+        function process(){
+            var now= (audio.currentTime/audio.duration)*300+"px";
+            pbtn.style.left=now;
+            pbar.style.width=now;
+            playtime.innerHTML = mtime(audio.currentTime);
+        }
+
+        function start(){
+            setInterval("process()",1000);
+        }
+
+        function mtime(n){
+            var a = parseInt(n/60);
+            var b = parseInt(n%60);
+            a=a >= 10 ? a :"0"+a;
+            b=b >= 10 ? b :"0"+b;
+            return a+":"+b;
+        }
+
+        play.onclick=function(){
+            if(audio.paused==true){
+            audio.play();
+            play.style.backgroundPosition="-138px -194px";
+            start();
+            }
+            else{
+            audio.pause();
+            play.style.backgroundPosition="-137px -113px";
+            }
+        }
+    </script>
+</body>
+</html>
